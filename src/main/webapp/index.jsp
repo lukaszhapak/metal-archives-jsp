@@ -1,6 +1,6 @@
 <jsp:include page="topBar.jsp"/>
 
-<h2>Heavy Metal</h2>
+<h2>Metal Archives</h2>
 
 <h4>Heavy Metal Bands Repository</h4>
 
