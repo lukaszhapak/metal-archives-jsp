@@ -36,19 +36,19 @@ public class AlbumController {
     public String addAlbumForm(@PathVariable String id, Model model) {
         model.addAttribute(new Album());
         model.addAttribute("id", id);
-        return "/album//albumAddForm.jsp";
+        return "/album/albumAddForm.jsp";
     }
 
     @PostMapping("/band/{bandId}/addAlbum")
     public String addAlbum(@PathVariable String bandId, @Valid Album album, Errors errors, Model model) {
         model.addAttribute("id", bandId);
         if (errors.hasErrors()) {
-            return "/album//albumAddForm.jsp";
+            return "/album/albumAddForm.jsp";
         }
         Band band = bandService.getBand(bandId);
         album.setBand(band);
         albumService.addAlbum(album);
-        return "/album//albumAdd.jsp";
+        return "/album/albumAdd.jsp";
     }
 
     @GetMapping("/album/{id}/delete")
@@ -68,10 +68,10 @@ public class AlbumController {
     public String editAlbum(@PathVariable String id, @Valid Album album, Errors errors, Model model) {
         model.addAttribute("id", id);
         if (errors.hasErrors()) {
-            return "/album//albumEditForm.jsp";
+            return "/album/albumEditForm.jsp";
         }
         album.setBand(bandService.getBand(albumService.getBandId(id)));
         albumService.updateAlbum(album);
-        return "/album//albumEdit.jsp";
+        return "/album/albumEdit.jsp";
     }
 }

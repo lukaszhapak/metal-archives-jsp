@@ -36,19 +36,19 @@ public class SongController {
     public String addSongForm(@PathVariable String id, Model model) {
         model.addAttribute("id", id);
         model.addAttribute(new Song());
-        return "/song//songAddForm.jsp";
+        return "/song/songAddForm.jsp";
     }
 
     @PostMapping("/album/{albumId}/addSong")
     public String addSong(@PathVariable String albumId, @Valid Song song, Errors errors, Model model) {
         model.addAttribute("id", albumId);
         if (errors.hasErrors()) {
-            return "/song//songAddForm.jsp";
+            return "/song/songAddForm.jsp";
         }
         Album album = albumService.getAlbum(albumId);
         song.setAlbum(album);
         songService.addSong(song);
-        return "/song//songAdd.jsp";
+        return "/song/songAdd.jsp";
     }
 
     @GetMapping("/song/{id}/delete")
